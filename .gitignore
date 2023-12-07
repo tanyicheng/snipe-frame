@@ -1,0 +1,13 @@
+## ide
+**/.idea
+*.iml
+rebel.xml
+
+## backend
+**/target
+**/logs
+
+## front
+**/*.lock
+**/.DS_Store
+os_del.cmd
