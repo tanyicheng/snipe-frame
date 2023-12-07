@@ -1,4 +1,4 @@
-package com.tyc.snipeboot.demo;
+package org.snipe.modules.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
