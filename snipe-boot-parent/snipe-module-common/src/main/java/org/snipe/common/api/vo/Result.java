@@ -1,6 +1,7 @@
 package org.snipe.common.api.vo;
 
 import lombok.Data;
+import org.snipe.common.constant.CommonConstant;
 
 import java.io.Serializable;
 
@@ -16,30 +17,30 @@ public class Result<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-//	/**
-//	 * 成功标志
-//	 */
+	/**
+	 * 成功标志
+	 */
 //	@ApiModelProperty(value = "成功标志")
-//	private boolean success = true;
-//
-//	/**
-//	 * 返回处理消息
-//	 */
+	private boolean success = true;
+
+	/**
+	 * 返回处理消息
+	 */
 //	@ApiModelProperty(value = "返回处理消息")
-//	private String message = "";
-//
-//	/**
-//	 * 返回代码
-//	 */
+	private String message = "";
+
+	/**
+	 * 返回代码
+	 */
 //	@ApiModelProperty(value = "返回代码")
-//	private Integer code = 0;
-//
-//	/**
-//	 * 返回数据对象 data
-//	 */
+	private Integer code = 0;
+
+	/**
+	 * 返回数据对象 data
+	 */
 //	@ApiModelProperty(value = "返回数据对象")
-//	private T result;
-//
+	private T result;
+
 //	/**
 //	 * 时间戳
 //	 */
@@ -132,27 +133,27 @@ public class Result<T> implements Serializable {
 //		return r;
 //	}
 //
-//	public static<T> Result<T> error(String msg, T data) {
-//		Result<T> r = new Result<T>();
-//		r.setSuccess(false);
-//		r.setCode(CommonConstant.SC_INTERNAL_SERVER_ERROR_500);
-//		r.setMessage(msg);
-//		r.setResult(data);
-//		return r;
-//	}
-//
-//	public static<T> Result<T> error(String msg) {
-//		return error(CommonConstant.SC_INTERNAL_SERVER_ERROR_500, msg);
-//	}
-//
-//	public static<T> Result<T> error(int code, String msg) {
-//		Result<T> r = new Result<T>();
-//		r.setCode(code);
-//		r.setMessage(msg);
-//		r.setSuccess(false);
-//		return r;
-//	}
-//
+	public static<T> Result<T> error(String msg, T data) {
+		Result<T> r = new Result<T>();
+		r.setSuccess(false);
+		r.setCode(CommonConstant.SC_INTERNAL_SERVER_ERROR_500);
+		r.setMessage(msg);
+		r.setResult(data);
+		return r;
+	}
+
+	public static<T> Result<T> error(String msg) {
+		return error(CommonConstant.SC_INTERNAL_SERVER_ERROR_500, msg);
+	}
+
+	public static<T> Result<T> error(int code, String msg) {
+		Result<T> r = new Result<T>();
+		r.setCode(code);
+		r.setMessage(msg);
+		r.setSuccess(false);
+		return r;
+	}
+
 //	public Result<T> error500(String message) {
 //		this.message = message;
 //		this.code = CommonConstant.SC_INTERNAL_SERVER_ERROR_500;

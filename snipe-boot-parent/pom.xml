@@ -10,11 +10,11 @@
     <description>snipe-boot-parent</description>
 
     <properties>
+        <snipeboot.version>0.0.1</snipeboot.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.13</spring-boot.version>
-        <snipeboot.version>0.0.1</snipeboot.version>
         <springfox.version>2.9.2</springfox.version>
 
         <!--当前环境-->
@@ -26,43 +26,38 @@
         <module>snipe-module-start</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+    <dependencies>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- snipe common -->
-        <dependency>
-            <groupId>org.snipeframework.boot</groupId>
-            <artifactId>snipe-module-common</artifactId>
-            <version>${snipeboot.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
     </dependencies>
 
+    <!--
+        dependencyManagement里只是声明依赖，并不自动实现引入，因此子项目需要显示的声明需要用的依赖
+        如果不在子项目中声明依赖，是不会从父项目中继承下来的；
+        只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，
+        并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本
+        -->
     <dependencyManagement>
         <dependencies>
-
             <!-- snipe common -->
             <dependency>
                 <groupId>org.snipeframework.boot</groupId>
                 <artifactId>snipe-module-common</artifactId>
+                <version>${snipeboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.snipeframework.boot</groupId>
+                <artifactId>snipe-module-start</artifactId>
                 <version>${snipeboot.version}</version>
             </dependency>
 
@@ -81,44 +76,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <configuration>
-                    <mainClass>org.snipe.SnipeBootApplication</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>repackage</id>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.json</include>
-                    <include>**/*.ftl</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
     <!-- 环境 -->

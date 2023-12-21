@@ -1,6 +1,8 @@
 package org.snipe.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.snipe.common.api.vo.Result;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -13,14 +15,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class SnipeBootExceptionHandler {
 
-//	/**
-//	 * 处理自定义异常
-//	 */
-//	@ExceptionHandler(JeecgBootException.class)
-//	public Result<?> handleJeecgBootException(JeecgBootException e){
-//		log.error(e.getMessage(), e);
-//		return Result.error(e.getMessage());
-//	}
+	/**
+	 * 处理自定义异常
+	 */
+	@ExceptionHandler(SnipeBootException.class)
+	public Result<?> handleJeecgBootException(SnipeBootException e){
+		log.error(e.getMessage(), e);
+		return Result.error(e.getMessage());
+	}
 //
 //	/**
 //	 * 处理自定义微服务异常
