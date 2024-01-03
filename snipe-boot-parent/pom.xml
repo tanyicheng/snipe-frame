@@ -16,7 +16,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.13</spring-boot.version>
         <springfox.version>2.9.2</springfox.version>
+        <!--数据库-->
         <druid.version>1.2.19</druid.version>
+        <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
 
         <!--当前环境-->
         <profile.name>dev</profile.name>
@@ -56,6 +58,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- 日志管理 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
 
     </dependencies>
