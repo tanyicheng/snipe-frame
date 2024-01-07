@@ -27,7 +27,7 @@ class Springboot2AdminStudyApplicationTests {
     @Test
     void contextLoads() {
       // 执行一条sql语句，检查是否正常
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from adm_employee");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from sys_user");
         for (Map<String, Object> map : maps) {
             System.out.println(map);
         }
@@ -47,6 +47,7 @@ class Springboot2AdminStudyApplicationTests {
         DruidDataSource druidDataSource = (DruidDataSource) dataSource;
         System.out.println("druidDataSource 数据源最大连接数：" + druidDataSource.getMaxActive());
         System.out.println("druidDataSource 数据源初始化连接数：" + druidDataSource.getInitialSize());
+
         //关闭连接
         connection.close();
     }
