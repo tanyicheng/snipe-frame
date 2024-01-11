@@ -132,7 +132,7 @@ spring:
     password: 'seraphim@Redis'
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/snipe/modules/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -141,11 +141,17 @@ mybatis-plus:
       id-type: ASSIGN_ID
       # 默认数据库表下划线命名
       table-underline: true
+      #数据库类型
+      db-type: MYSQL
   configuration:
     # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 返回类型为Map,显示null对应的字段
     call-setters-on-nulls: true
+#Mybatis输出sql日志
+logging:
+  level:
+    org.snipe.modules.system.mapper: info
 #jeecg专用配置
 minidao:
   base-package: org.jeecg.modules.jmreport.*,org.jeecg.modules.drag.*
@@ -222,10 +228,6 @@ jeecg:
 #cas单点登录
 cas:
   prefixUrl: http://cas.example.org:8443/cas
-#Mybatis输出sql日志
-logging:
-  level:
-    org.jeecg.modules.system.mapper: info
 #swagger
 knife4j:
   #开启增强配置
